@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kartik Kain | Cloud & DevOps Engineer Portfolio</title>
+    
+    <!-- 
+        CUSTOMIZATION GUIDE:
+        1. Fonts: We are using 'Poppins' from Google Fonts. You can change the link below to use a different font.
+        2. Icons: We are using FontAwesome for icons (GitHub, LinkedIn, etc.).
+    -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* =========================================
+           CSS VARIABLES (EASILY CUSTOMIZABLE)
+           ========================================= */
+        :root {
+            /* Color Scheme: Gradient Blue as requested */
+            --primary-color: #2563eb;       /* Bright Blue */
+            --secondary-color: #1e40af;     /* Darker Blue */
+            --accent-color: #60a5fa;        /* Light Blue accent */
+            --bg-dark: #0f172a;             /* Deep Navy Background */
+            --bg-card: #1e293b;             /* Slightly lighter for cards */
+            --text-main: #f8fafc;           /* White/Off-white text */
+            --text-muted: #94a3b8;          /* Grey text for descriptions */
+            --gradient-main: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            --transition-speed: 0.3s;
+        }
+
+        /* =========================================
+           GLOBAL STYLES
+           ========================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition-speed);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Utilities */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            position: relative;
+            display: block;           /* Allows margin auto to work */
+            width: fit-content;       /* Ensures box shrinks to text size */
+            margin: 0 auto 3rem auto;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50%;
+            height: 4px;
+            background: var(--gradient-main);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* =========================================
+           HEADER & NAVIGATION
+           ========================================= */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95); /* Glassmorphism effect */
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+        }
+
+        /* Hover Animation for Nav Links: Underline slide */
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width var(--transition-speed);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Resume Button Styling */
+        .btn-resume {
+            background: var(--gradient-main);
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            color: white;
+            font-weight: 600;
+            border: 2px solid transparent;
+            transition: all var(--transition-speed);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-resume:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+            border-color: var(--accent-color);
+        }
+
+        /* Mobile Menu Toggle (Hidden on Desktop) */
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* =========================================
+           HERO SECTION
+           ========================================= */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: radial-gradient(circle at top right, rgba(37, 99, 235, 0.1), transparent 40%),
+                        radial-gradient(circle at bottom left, rgba(30, 64, 175, 0.1), transparent 40%);
+            padding-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .hero-content h1 span {
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            animation: fadeInUp 1s ease-out 0.2s backwards;
+        }
+
+        .hero-btns {
+            animation: fadeInUp 1s ease-out 0.4s backwards;
+        }
+
+        .btn-outline {
+            border: 2px solid var(--accent-color);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            margin-left: 1rem;
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .btn-outline:hover {
+            background: rgba(96, 165, 250, 0.1);
+        }
+
+        /* Social Icons in Hero */
+        .social-links {
+            margin-top: 2rem;
+            animation: fadeInUp 1s ease-out 0.6s backwards;
+        }
+
+        .social-links a {
+            font-size: 1.5rem;
+            margin: 0 10px;
+            color: var(--text-muted);
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+            transform: scale(1.2);
+        }
+
+        /* =========================================
+           ABOUT SECTION
+           ========================================= */
+        .about {
+            padding: 6rem 0;
+            background-color: var(--bg-dark);
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 1;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+
+        .about-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* =========================================
+           SKILLS SECTION (Organized & Animated)
+           ========================================= */
+        .skills {
+            padding: 6rem 0;
+            background-color: var(--bg-card); /* Slightly different shade */
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--bg-dark);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .skill-category h3 {
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-item {
+            margin-bottom: 1.2rem;
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.3rem;
+        }
+
+        .skill-name {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        /* Proficiency Bar Container */
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        /* Animated Progress Fill */
+        .progress-fill {
+            height: 100%;
+            background: var(--gradient-main);
+            border-radius: 4px;
+            width: 0; /* Starts at 0 for animation */
+            transition: width 1.5s ease-in-out;
+        }
+
+        /* =========================================
+           EXPERIENCE SECTION (Timeline)
+           ========================================= */
+        .experience {
+            padding: 6rem 0;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Vertical Line */
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: var(--primary-color);
+            opacity: 0.3;
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            position: relative;
+            width: 50%;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            padding-right: 40px;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            padding-left: 40px;
+        }
+
+        /* Dot on the timeline */
+        .timeline-dot {
+            position: absolute;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            border: 4px solid var(--bg-dark);
+            z-index: 10;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -10px;
+        }
+
+        .timeline-content {
+            background: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: transform 0.3s;
+        }
+
+        .timeline-content:hover {
+            transform: scale(1.02);
+            border-color: var(--accent-color);
+        }
+
+        .timeline-date {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .timeline-content h4 {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-content ul {
+            list-style: disc;
+            list-style-position: inside;
+            text-align: left; /* Force left alignment for bullets even on right side */
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* =========================================
+           PROJECTS SECTION (Expandable)
+           ========================================= */
+        .projects {
+            padding: 6rem 0;
+            background: var(--bg-card);
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-dark);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .project-header {
+            padding: 2rem;
+            cursor: pointer;
+            position: relative;
+            background: linear-gradient(to bottom, rgba(30,58,138,0.2), transparent);
+        }
+
+        .project-header h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .tech-stack {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .tech-tag {
+            background: rgba(37, 99, 235, 0.2);
+            color: var(--accent-color);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .expand-icon {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            color: var(--accent-color);
+            transition: transform 0.3s;
+        }
+
+        /* Expanded Details (Hidden by default) */
+        .project-details {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 2rem;
+            background: rgba(15, 23, 42, 0.5);
+            transition: max-height 0.4s ease-out, padding 0.4s ease;
+        }
+
+        .project-details p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .project-details ul {
+            list-style: disc;
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            border-bottom: 1px dashed var(--accent-color);
+        }
+
+        /* Class added via JS to expand */
+        .project-card.active .project-details {
+            max-height: 500px; /* Arbitrary large height */
+            padding-bottom: 2rem;
+        }
+
+        .project-card.active .expand-icon {
+            transform: rotate(180deg);
+        }
+
+       /* =========================================
+           CONTACT SECTION (Updated)
+           ========================================= */
+        .contact {
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .contact-box {
+            background: var(--bg-card);
+            padding: 3rem;
+            border-radius: 20px;
+            max-width: 800px; /* Increased width for form */
+            margin: 0 auto;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* Animated Contact Buttons */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-btn {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: var(--text-muted);
+            border: 1px solid transparent;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy transition */
+            cursor: pointer;
+        }
+
+        .contact-btn i {
+            font-size: 2rem;
+            color: var(--accent-color);
+            transition: color 0.3s;
+        }
+
+        .contact-btn span {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Hover Effect: Full Animation */
+        .contact-btn:hover {
+            background: var(--gradient-main); /* Fills with blue gradient */
+            transform: translateY(-10px) scale(1.05); /* Lifts up */
+            color: white;
+            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.4);
+            border-color: rgba(255,255,255,0.2);
+        }
+
+        .contact-btn:hover i {
+            color: white; /* Icon turns white */
+        }
+
+        /* CUSTOM FORM STYLING 
+           Replaces the external iframe for a native look
+        */
+        .contact-form {
+            text-align: left;
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+
+        /* Blended Input Styling */
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 1rem;
+            /* Darker background than the card to look like "cutouts" */
+            background: var(--bg-dark);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            color: var(--text-main);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            /* Blue glow effect on focus */
+            box-shadow: 0 0 15px rgba(37, 99, 235, 0.3);
+            background: rgba(15, 23, 42, 0.8);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .btn-submit {
+            background: var(--gradient-main);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            align-self: flex-start;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4);
+        }
+
+        /* =========================================
+           FOOTER
+           ========================================= */
+        footer {
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* =========================================
+           KEYFRAME ANIMATIONS
+           ========================================= */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* =========================================
+           RESPONSIVE DESIGN (MOBILE)
+           ========================================= */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Hide nav on mobile for simplicity, or implement hamburger */
+            }
+            .hero-content h1 { font-size: 2.5rem; }
+            .timeline::before { left: 20px; }
+            .timeline-item { width: 100%; padding-left: 50px; padding-right: 0; }
+            .timeline-item:nth-child(even) { left: 0; }
+            .timeline-item:nth-child(odd) { text-align: left; }
+            .timeline-item:nth-child(odd) .timeline-dot,
+            .timeline-item:nth-child(even) .timeline-dot { left: 10px; right: auto; }
+            .about-content { flex-direction: column; gap: 2rem; }
+            .section-title { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER SECTION -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Kartik<span> Kain</span></div>
+                <div class="nav-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#projects">Projects</a>
+                </div>
+                <!-- One-click Resume Download Button -->
+                <!-- Replace 'your-resume.pdf' with the actual file path -->
+                <a href="./Kartik_DevOps_Resume_25.pdf" class="btn-resume" download>
+                    <i class="fas fa-download"></i> Resume
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <!-- Introduction and Role -->
+            <h1>Hey, I'm Kartik Kain <br> <span>Cloud & DevOps Engineer</span></h1>
+            <p>Specializing in AWS Infrastructure Automation, CI/CD Implementation, and DevSecOps practices. Helping organizations reduce costs and improve deployment efficiency.</p>
+            
+            <div class="hero-btns">
+                <a href="#projects" class="btn-resume">View My Work</a>
+                <a href="#contact" class="btn-outline">Contact Me</a>
+            </div>
+
+            <!-- Social Links extracted from Resume -->
+            <div class="social-links">
+                <a href="mailto:kartikkain6@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/kartikkain/" title="LinkedIn"><i class="fab fa-linkedin"></i></a> <!-- Update with real link -->
+                <a href="https://www.github.com/Mrkainn/" title="GitHub"><i class="fab fa-github"></i></a>     <!-- Update with real link -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        I am a Cloud & DevOps Engineer based in New Delhi, India, with 3+ years of total IT experience. 
+                        I have 2+ years of dedicated experience in AWS Infrastructure automation and CI/CD implementation. 
+                        I have a proven record of reducing infrastructure costs by 30% and improving deployment efficiency by 60%.
+                    </p>
+                    <br>
+                    <p>
+                        My expertise lies in architecting secure cloud solutions, automating workflows using Terraform and Jenkins, 
+                        and containerizing workloads with Docker and Kubernetes.
+                    </p>
+                    
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <h3>3+</h3>
+                            <p>Total Years of Experience</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>30%</h3>
+                            <p>Cost Reduced</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>60%</h3>
+                            <p>Eff. Boost</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                
+                <!-- Category 1: Cloud Platforms -->
+                <div class="skill-category">
+                    <h3><i class="fas fa-cloud"></i> Cloud Platforms</h3>
+                    <!-- Skill Item -->
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">AWS (Primary)</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 90%"></div></div>
+                    </div>
+                    <!-- Skill Item -->
+                     <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">MS Azure Cloud</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 75%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Google Cloud (GCP)</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 65%"></div></div>
+                    </div>
+                </div>
+
+                <!-- Category 2: Containerization & Orchestration -->
+                <div class="skill-category">
+                    <h3><i class="fas fa-box-open"></i> Containerization</h3>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Docker</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 85%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Docker-Compose</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 80%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Kubernetes (EKS)</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 65%"></div></div>
+                    </div>
+                </div>
+
+                <!-- Category 3: Infrastructure as Code -->
+                <div class="skill-category">
+                    <h3><i class="fas fa-code-branch"></i> Infrastructure as Code</h3>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Terraform</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 75%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">CloudFormation</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 60%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Ansible</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 60%"></div></div>
+                    </div>
+                </div>
+
+                <!-- Category 4: CI/CD Pipelines -->
+                <div class="skill-category">
+                    <h3><i class="fas fa-code-branch"></i>CI/CD Pipelines</h3>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Jenkins</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 85%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Gitlab CI</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 75%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Azure DevOps</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 65%"></div></div>
+                    </div>
+                </div>
+
+                <!-- Category 5: Scripting & Monitoring -->
+                <div class="skill-category">
+                    <h3><i class="fas fa-terminal"></i> Scripting & Monitoring</h3>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Shell Scripting</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 55%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Python</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 55%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">Prometheus / Grafana (ELK)</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 75%"></div></div>
+                    </div>
+                </div>
+
+                <!-- Category 6: Security -->
+                <div class="skill-category">
+                    <h3><i class="fas fa-terminal"></i> Security</h3>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">SonarQube</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 75%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">OWASP, Trivy</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 70%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info">
+                            <span class="skill-name">IAM, RBAC, Security Group, Secrets Manager</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 80%"></div></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE SECTION -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="timeline">
+                
+                <!-- Experience Item 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">July 2023 - Present</span>
+                        <h3>DevOps Engineer (Analyst)</h3>
+                        <h4>HCLTech | Noida, India</h4>
+                        <ul>
+                            <li>Architected and deployed secure, cost-optimized AWS and GCP cloud solutions.</li>
+                            <li>Reduced infrastructure costs by 30% and improved availability by 40%.</li>
+                            <li>Automated workflows using Terraform and Jenkins, cutting manual provisioning by 70%.</li>
+                            <li>Led containerization with Docker and Kubernetes for 5+ enterprise applications.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Experience Item 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">July 2022 - July 2023</span>
+                        <h3>IVR Developer (Analyst)</h3>
+                        <h4>HCLTech | Noida, India</h4>
+                        <ul>
+                            <li>Developed modern contact center solutions integrating IVRS and Outbound Dialers.</li>
+                            <li>Built RESTful API integrations for IVR and backend databases.</li>
+                            <li>Collaborated with operations to resolve critical application issues.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Experience Item 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Dec 2021 - June 2022</span>
+                        <h3>Intern</h3>
+                        <h4>HCLTech | Noida, India</h4>
+                        <ul>
+                            <li>Completed structured training on Networking, Databases, Linux, and Virtualization.</li>
+                            <li>Contributed to project deliverables within deadlines.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS SECTION (Expandable) -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Key Projects</h2>
+            <div class="project-grid">
+                
+                <!-- Project 1 -->
+                <div class="project-card" onclick="toggleProject(this)">
+                    <div class="project-header">
+                        <h3>Microservices with NGINX</h3>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">NGINX</span>
+                            <span class="tech-tag">Reverse Proxy</span>
+                            <span class="tech-tag">Microservices</span>
+                        </div>
+                        <i class="fas fa-chevron-down expand-icon"></i>
+                    </div>
+                    <div class="project-details">
+                        <p><strong>Goal:</strong> Containerized Microservices Architecture Implementation.</p>
+                        <ul>
+                            <li>Designed a multi-service architecture using Docker Compose and NGINX reverse proxy.</li>
+                            <li>Achieved seamless path-based routing (/service1, /service2) between services.</li>
+                            <li>Improved local development efficiency by 80% through automated build processes.</li>
+                            <li>Ensured 100% service availability using Docker bridge networking.</li>
+                        </ul>
+                        <a href="https://github.com/MrKainn/MultiServiceApp-NGINX-ReverseProxy" class="project-link">GitHub <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card" onclick="toggleProject(this)">
+                    <div class="project-header">
+                        <h3>EKS Provisioning via Terraform (GitOps)</h3>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Terraform</span>
+                            <span class="tech-tag">AWS EKS</span>
+                            <span class="tech-tag">ArgoCD</span>
+                        </div>
+                        <i class="fas fa-chevron-down expand-icon"></i>
+                    </div>
+                    <div class="project-details">
+                        <p><strong>Goal:</strong> Automated EKS Cluster Provisioning via Terraform & GitOps.</p>
+                        <ul>
+                            <li>Provisioned fully managed AWS EKS cluster including VPC, IAM, and node groups.</li>
+                            <li>Implemented ArgoCD GitOps workflow for declarative application deployment.</li>
+                            <li>Achieved 90% reduction in manual deployment steps.</li>
+                            <li>Exposed ArgoCD UI using Load Balancer for operational access.</li>
+                        </ul>
+                        <a href="https://github.com/MrKainn/Automated-EKS-Cluster-Provisioning-via-Terraform-GitOps" class="project-link">GitHub <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card" onclick="toggleProject(this)">
+                    <div class="project-header">
+                        <h3>MERN Stack Deployment (DevSecOps)</h3>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Jenkins</span>
+                            <span class="tech-tag">ArgoCD</span>
+                            <span class="tech-tag">SonarQube</span>
+                            <span class="tech-tag">Email</span>
+                        </div>
+                        <i class="fas fa-chevron-down expand-icon"></i>
+                    </div>
+                    <div class="project-details">
+                        <p><strong>Goal:</strong> Deployment of MERN Stack Application using DevSecOps capabilities.</p>
+                        <ul>
+                            <li>Designed CI/CD pipelines using Jenkins, eliminating manual deployment errors.</li>
+                            <li>Automated dependency checks (OWASP), code quality (SonarQube), and scans (Trivy).</li>
+                            <li>Mitigated 150+ vulnerabilities and reduced critical code smells by 40%.</li>
+                            <li>Integrated SMTP for email notifications, improving incident response time by 70%.</li>
+                        </ul>
+                        <a href="https://github.com/MrKainn/Wanderlust-Mega-Project" class="project-link">GitHub <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-box">
+                <p>I am currently open to new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!</p>
+                
+                <!-- Animated Contact Buttons -->
+                <div class="contact-grid">
+                    <a href="tel:+917042991198" class="contact-btn">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>+91 7042991198</span>
+                    </a>
+                    <a href="mailto:kartikkain6@gmail.com" class="contact-btn">
+                        <i class="fas fa-envelope"></i>
+                        <span>kartikkain6@gmail.com</span>
+                    </a>
+                    <a href="https://maps.google.com/?q=New+Delhi,+India" target="_blank" class="contact-btn">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>New Delhi, India</span>
+                    </a>
+                </div>
+
+                <!-- 
+                   NATIVE CONTACT FORM (Replaces Iframe)
+                   HOW TO CONNECT TO GOOGLE FORMS:
+                   1. Create a Google Form.
+                   2. Inspect the form to find the 'action' URL and 'name' attributes for inputs (e.g. entry.123456).
+                   3. Replace 'ACTION_URL_HERE' with your form action.
+                   4. Replace name="name" with name="entry.YOUR_ID_FOR_NAME".
+                   
+                   EASIER ALTERNATIVE: Use Formspree.io and paste their URL in action="".
+                -->
+                <form action="https://submit-form.com/gu8Veqyiy" method="POST" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">👨‍🎓 Your Name</label>
+                        <input type="text" id="name" name="name" class="form-input" placeholder="What's your name?" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">📧 Your Email</label>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="What's your email?" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">💬 Message</label>
+                        <textarea id="message" name="message" class="form-textarea" placeholder="Write your message here..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Kartik Kain. Built with HTML & CSS.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT FOR INTERACTIVITY -->
+    <script>
+        // FUNCTION: Toggle Project Details
+        // Description: Adds/removes the 'active' class to project cards to trigger the CSS expansion animation.
+        function toggleProject(card) {
+            // Close other open projects (optional, for accordion behavior)
+            const allCards = document.querySelectorAll('.project-card');
+            allCards.forEach(c => {
+                if (c !== card) c.classList.remove('active');
+            });
+
+            // Toggle current card
+            card.classList.toggle('active');
+        }
+
+        // ANIMATION: Simple Intersection Observer for scroll animations
+        // Description: Triggers the progress bar animation when the Skills section is in view.
+        const skillsSection = document.querySelector('#skills');
+        const progressFills = document.querySelectorAll('.progress-fill');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    progressFills.forEach(fill => {
+                        // Reset width to trigger transition (visual trick)
+                        const width = fill.style.width;
+                        fill.style.width = '0';
+                        setTimeout(() => {
+                            fill.style.width = width;
+                        }, 100);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        observer.observe(skillsSection);
+    </script>
+</body>
+</html>
